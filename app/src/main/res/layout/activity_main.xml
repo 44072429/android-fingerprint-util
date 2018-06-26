@@ -12,6 +12,7 @@ tools:context="util.android.ys.com.androidmediautil.MainActivity">
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_texet"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center"
@@ -39,7 +40,7 @@ tools:context="util.android.ys.com.androidmediautil.MainActivity">
         android:id="@+id/Btn3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="销毁指纹" />
+        android:text="指纹录入" />
 
 </LinearLayout>
 

@@ -10,64 +10,67 @@ public class FingerUtilV2 {
 
     public static Fingerprint fingerprint;
 
+    /**
+     * 这个函数必须在ui线程调用，必须在app开始时调用
+     */
+    public static void globalInit(Context context) {
+        fingerprint = new FingerprintZhongZhengV2();
+        fingerprint.globalInit(context);
+    }
+
+    /**
+     * 这个函数必须在ui线程调用，必须在app结束时调用
+     */
+    public static void globalRelease() {
+        if (fingerprint != null) {
+            fingerprint.globalRelease();
+            fingerprint = null;
+        }
+    }
+
     // 指纹录入
-    public static boolean startCaptrue( final Fingerprint.FingerprinEventlistener fingerprinEventlistener ,  Context context) {
-        String devType = "default";
+    public static boolean fingerEnrollStart(final Fingerprint.FingerprinEnrollEventlistener fingerprinEnrollEventlistener , int time) {
 
-        if(devType=="default")
-        {
-            fingerprint = new FingerprintZhongZhengV2();
-        } else {
+//        String devType = "default";
+//
+//        if (devType == "default") {
+//            fingerprint = new FingerprintZhongZhengV2();
+//        } else {
+//
+//        }
 
-        }
-
-        if(fingerprint != null) {
-            return fingerprint.startCaptrue( fingerprinEventlistener , context );
-        }
-
-        return false;
-    }
-
-    public static void stopCaptrue() {
-
-        if( fingerprint != null){
-            fingerprint.stopCaptrue();
-        }
-    }
-
-
-    // 指纹验证
-    public static boolean fingerStart( final Fingerprint.FingerprinEventlistener fingerprinEventlistener ,  Context context) {
-        String devType = "default";
-
-        if(devType=="default")
-        {
-            fingerprint = new FingerprintZhongZhengV2();
-        } else {
-
-        }
-
-        if(fingerprint != null) {
-            return fingerprint.fingerStart( fingerprinEventlistener , context );
+        if (fingerprint != null) {
+            return fingerprint.fingerEnrollStart( fingerprinEnrollEventlistener  , time);
         }
 
         return false;
     }
 
-    public static void fingerStop() {
+    public static void fingerEnrollStop() {
 
-        if( fingerprint != null){
-            fingerprint.fingerStop();
-        }
-
-    }
-
-    // 指纹销毁
-    public  static void destroy (){
-        if( fingerprint != null){
-            fingerprint.destroy();
+        if (fingerprint != null) {
+            fingerprint.fingerEnrollStop();
         }
     }
 
+    /**
+     * 用于指纹验证
+     */
+    public static boolean fingerVerifyStart(Fingerprint.FingerprinEventlistener fingerprinEventlistener){
+        if (fingerprint != null) {
+            return fingerprint.fingerVerifyStart(fingerprinEventlistener);
+        }
+
+        return false;
+    }
+
+    /**
+     * 用于指纹验证
+     */
+    public static void fingerVerifyStop(){
+        if (fingerprint != null) {
+            fingerprint.fingerVerifyStop();
+        }
+    }
 }
 
