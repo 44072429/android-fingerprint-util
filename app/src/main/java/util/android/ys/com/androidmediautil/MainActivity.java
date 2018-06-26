@@ -120,8 +120,13 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(String err) {
-                        tvTexet.setText(err);
+                    public void onFailure(final String err) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvTexet.setText(err);
+                            }
+                        });
                     }
 
                     @Override

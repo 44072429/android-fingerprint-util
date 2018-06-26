@@ -98,16 +98,25 @@ public class FingerprintZhongZhengV2 implements Fingerprint {
 
                     if (enrollidx == 2) {
 
-                        byte[] regTemp = new byte[2048];
-                        // 将三个指纹合并成一个最终指纹
-                        if (0 < FingerprintService.merge(regtemparray[0], regtemparray[1], regtemparray[2], regTemp)) {
-                            FingerprintService.save(regTemp, "test" + uid++);//Todo  改ID
+                        if(enrollidx > 0 && FingerprintService.verify(regtemparray[enrollidx - 1], tmpBuffer) <= 0) {
 
-                            // 将指纹回调上去
-                            fingerprinEnrollEventlistener.onSuccess(captureMode, imageBuffer, imageAttributes, templateBuffer, timesLeft - enrollidx);
-                            fingerprinEnrollEventlistener.onEnrollSuccess(regTemp);
-
+                            fingerprinEnrollEventlistener.onFailure("请按同一个指纹三次");
                             enrollidx = 0;
+
+                        } else {
+
+                            byte[] regTemp = new byte[2048];
+                            // 将三个指纹合并成一个最终指纹
+                            if (0 < FingerprintService.merge(regtemparray[0], regtemparray[1], regtemparray[2], regTemp)) {
+                                FingerprintService.save(regTemp, "test" + uid++);//Todo  改ID
+
+                                // 将指纹回调上去
+                                fingerprinEnrollEventlistener.onSuccess(captureMode, imageBuffer, imageAttributes, templateBuffer, timesLeft - enrollidx);
+                                fingerprinEnrollEventlistener.onEnrollSuccess(regTemp);
+
+                                enrollidx = 0;
+
+                            }
 
                         }
 
