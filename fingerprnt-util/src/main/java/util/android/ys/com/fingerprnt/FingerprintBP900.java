@@ -34,7 +34,6 @@ public class FingerprintBP900 implements Fingerprint {
     @Override
     public boolean fingerEnrollStart(FingerprinEnrollEventlistener fingerprinEnrollEventlistener, int times) {
         this.fingerprinEnrollEventlistener = fingerprinEnrollEventlistener;
-
         if(regFingerThread == null){
             regFingerThread = new Thread(new Runnable() {
                 @Override
@@ -44,45 +43,38 @@ public class FingerprintBP900 implements Fingerprint {
             });
             regFingerThread.start();
         }
-
         return true;
     }
 
     @Override
     public void fingerEnrollStop() {
         regFingerThread.interrupt();
+        regFingerThread = null;
     }
 
     /**
      * BP900指纹验证
-     *
      * @param fingerprinEventlistener
      * @return
      */
     @Override
     public boolean fingerVerifyStart(FingerprinEventlistener fingerprinEventlistener) {
         this.fingerprinEventlistener = fingerprinEventlistener;
-
-        if(regFingerThread != null){
-            regFingerThread.interrupt();
+        if(regFingerThread == null){
+            regFingerThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    regFinger();
+                }
+            });
+            regFingerThread.start();
         }
-
-        regFingerThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                verify();
-            }
-        });
-        regFingerThread.start();
-
         return true;
     }
 
     @Override
     public void fingerVerifyStop() {
-        if (regFingerThread.isAlive()) {
-            regFingerThread.interrupt();
-        }
+
     }
 
     private String newGBKString(byte[] bytes) {
@@ -166,9 +158,7 @@ public class FingerprintBP900 implements Fingerprint {
                 String str = newGBKString(message);
                 Log.d("aaa", "Str == >" + str);
                 Log.d("aaa", "r   == >" + str);
-//                fingerprinEventlistener.onFailure("超时 重新录入");
-
-                fingerprinEventlistener.onFailure(str);
+                fingerprinEventlistener.onFailure("超时 重新录入");
 
                 if (fingerprinEnrollEventlistener.onCaptureTime()) {
                     // 超时回调 如果true 继续采集 重新启动指纹
