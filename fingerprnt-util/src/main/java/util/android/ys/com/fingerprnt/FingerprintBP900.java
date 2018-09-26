@@ -34,7 +34,8 @@ public class FingerprintBP900 implements Fingerprint {
     @Override
     public boolean fingerEnrollStart(FingerprinEnrollEventlistener fingerprinEnrollEventlistener, int times) {
         this.fingerprinEnrollEventlistener = fingerprinEnrollEventlistener;
-        if(regFingerThread == null){
+
+        if(regFingerThread == null || regFingerThread.isAlive() == false){
             regFingerThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -43,6 +44,11 @@ public class FingerprintBP900 implements Fingerprint {
             });
             regFingerThread.start();
         }
+//        else {
+//            regFingerThread.interrupt();
+//            regFingerThread = null;
+//            Device.cancel();
+//        }
         return true;
     }
 
