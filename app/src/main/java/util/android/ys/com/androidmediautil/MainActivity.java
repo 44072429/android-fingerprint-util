@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        FingerUtilV2.globalInit(this);
+        FingerUtilV2.globalInit(this , "default");
     }
 
     @Override

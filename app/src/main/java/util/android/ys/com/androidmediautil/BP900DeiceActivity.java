@@ -26,7 +26,7 @@ public class BP900DeiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bp900_deice);
         ButterKnife.bind(this);
-        FingerUtilV2.globalInit(this);
+        FingerUtilV2.globalInit(this , "BP900");
     }
 
     @Override
