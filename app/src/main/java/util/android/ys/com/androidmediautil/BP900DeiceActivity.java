@@ -83,7 +83,7 @@ public class BP900DeiceActivity extends AppCompatActivity {
 
                     @Override
                     public boolean onCaptureTime() {
-                        return false;
+                        return true;
                     }
 
                 }, 3);
