@@ -91,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.Btn3:
 
-//                FingerUtilV2.fingerEnrollStop();
-
                 tvTexet.setText("请录入指纹");
                 FingerUtilV2.fingerEnrollStart(new Fingerprint.FingerprinEnrollEventlistener() {
                     @Override
@@ -137,6 +135,11 @@ public class MainActivity extends AppCompatActivity {
                                 tvTexet.setText("录入成功");
                             }
                         });
+                    }
+
+                    @Override
+                    public boolean onCaptureTime() {
+                        return false;
                     }
 
                 }, 3);

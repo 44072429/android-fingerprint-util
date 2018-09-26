@@ -39,6 +39,12 @@ public interface Fingerprint {
          */
         void onEnrollSuccess( byte[] templateBuffer);
 
+        /**
+         * 超时回调，返回true表示继续采集 ，false表示停止采集
+         * @return
+         */
+        boolean onCaptureTime();
+
     }
 
     void globalInit(Context context);

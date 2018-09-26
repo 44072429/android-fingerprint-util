@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BP900DeiceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_texet"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="请开启指纹"/>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/Btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开启指纹" />
+
+        <Button
+            android:id="@+id/Btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="停止指纹" />
+
+        <Button
+            android:id="@+id/Btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="指纹录入" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

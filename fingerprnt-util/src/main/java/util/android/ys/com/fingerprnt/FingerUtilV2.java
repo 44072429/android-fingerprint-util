@@ -14,8 +14,14 @@ public class FingerUtilV2 {
      * 这个函数必须在ui线程调用，必须在app开始时调用
      */
     public static void globalInit(Context context) {
-        fingerprint = new FingerprintZhongZhengV2();
-        fingerprint.globalInit(context);
+        String devType = "BP900";
+
+        if (devType == "default") {
+            fingerprint = new FingerprintZhongZhengV2();
+            fingerprint.globalInit(context);
+        } else if (devType == "BP900"){
+            fingerprint = new FingerprintBP900();
+        }
     }
 
     /**
@@ -60,7 +66,6 @@ public class FingerUtilV2 {
         if (fingerprint != null) {
             return fingerprint.fingerVerifyStart(fingerprinEventlistener);
         }
-
         return false;
     }
 
