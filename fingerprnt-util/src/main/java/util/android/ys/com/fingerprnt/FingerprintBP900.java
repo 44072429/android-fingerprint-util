@@ -34,7 +34,6 @@ public class FingerprintBP900 implements Fingerprint {
     @Override
     public boolean fingerEnrollStart(FingerprinEnrollEventlistener fingerprinEnrollEventlistener, int times) {
         this.fingerprinEnrollEventlistener = fingerprinEnrollEventlistener;
-
         if(regFingerThread == null || regFingerThread.isAlive() == false){
             regFingerThread = new Thread(new Runnable() {
                 @Override
@@ -44,11 +43,6 @@ public class FingerprintBP900 implements Fingerprint {
             });
             regFingerThread.start();
         }
-//        else {
-//            regFingerThread.interrupt();
-//            regFingerThread = null;
-//            Device.cancel();
-//        }
         return true;
     }
 
@@ -68,7 +62,7 @@ public class FingerprintBP900 implements Fingerprint {
             regFingerThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    regFinger();
+                    verify();
                 }
             });
             regFingerThread.start();
@@ -136,6 +130,8 @@ public class FingerprintBP900 implements Fingerprint {
             String str = newGBKString(message);
             Log.d("aaaa", "str == >" + str);
             Log.d("aaaa", "r   == >" + str);
+            fingerprinEnrollEventlistener.onFailure("请按同一个指纹三次");
+            regFinger();
             return;
         }
         Log.d("aaaa", "录入成功");
