@@ -48,6 +48,10 @@ public class FingerprintBP900 implements Fingerprint {
 
     @Override
     public void fingerEnrollStop() {
+        if (regFingerThread != null || regFingerThread.isAlive() == true) {
+            Device.cancel();
+            regFingerThread.interrupt();
+        }
     }
 
     /**
