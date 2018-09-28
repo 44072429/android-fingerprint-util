@@ -245,7 +245,7 @@ public class FingerprintBP900 implements Fingerprint {
                     Log.d("aaa", "r   == >" + str);
 //                    fingerprinEventlistener.onFailure("超时 重新录入");
                     fingerprinEventlistener.onFailure(str);
-                    regFinger();
+                    verify();
 //                    if (fingerprinEnrollEventlistener.onCaptureTime()) {
 //                        // 超时回调 如果true 继续采集 重新启动指纹
 //                        regFinger();
