@@ -1,5 +1,6 @@
 package util.android.ys.com.androidmediautil;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
@@ -52,7 +53,7 @@ public class BP900DeiceActivity extends AppCompatActivity implements TextToSpeec
         FingerUtilV2.globalRelease();
     }
 
-    @OnClick({R.id.Btn1, R.id.Btn2, R.id.Btn3, R.id.Btn4})
+    @OnClick({R.id.Btn1, R.id.Btn2, R.id.Btn3, R.id.Btn4 ,  R.id.Btn5})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Btn1:
@@ -130,6 +131,10 @@ public class BP900DeiceActivity extends AppCompatActivity implements TextToSpeec
                 break;
             case R.id.Btn4:
                 ttsRef.get().speak("说话", TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case  R.id.Btn5:
+                Intent intent = new Intent(BP900DeiceActivity.this, ScanRfidBP900Activity.class);
+                startActivity(intent);
                 break;
         }
     }

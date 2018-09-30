@@ -48,6 +48,12 @@
             android:layout_height="wrap_content"
             android:text="说话" />
 
+        <Button
+            android:id="@+id/Btn5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RFID" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

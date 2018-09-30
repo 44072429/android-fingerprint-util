@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".MainActivity">-->
+
+        <!-- <activity android:name=".MainActivity"> -->
         <activity android:name=".BP900DeiceActivity">
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="util.android.ys.com.androidutil.MainActivity" />
 
@@ -21,6 +22,7 @@
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
         </activity>
+        <activity android:name=".ScanRfidBP900Activity"></activity>
     </application>
 
 </manifest>
