@@ -15,7 +15,7 @@ public class FingerUtilV2 {
      */
     public static void globalInit(Context context , String devType) {
 //        String devType = "BP900";
-        if (devType == "default") {
+        if (devType == "ID510") {
             fingerprint = new FingerprintZhongZhengV2();
             fingerprint.globalInit(context);
         } else if (devType == "BP900"){
