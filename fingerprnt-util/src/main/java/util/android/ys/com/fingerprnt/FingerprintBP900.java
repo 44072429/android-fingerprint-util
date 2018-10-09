@@ -149,6 +149,8 @@ public class FingerprintBP900 implements Fingerprint {
             return;
         }
         Log.d("aaaa", "录入成功");
+        String f=new String(mb);
+        Log.e("fingert",f);
         fingerprinEnrollEventlistener.onEnrollSuccess(mb);
         regFinger();
     }

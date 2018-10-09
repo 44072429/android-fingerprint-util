@@ -113,10 +113,12 @@ public class BP900DeiceActivity extends AppCompatActivity implements TextToSpeec
                     }
 
                     @Override
-                    public void onEnrollSuccess(byte[] templateBuffer) {
+                    public void onEnrollSuccess(final byte[] templateBuffer) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+//                                String aaa = templateBuffer.toString();
+                                String str = new String(templateBuffer);
                                 tvTexet.setText("录入成功");
                             }
                         });
