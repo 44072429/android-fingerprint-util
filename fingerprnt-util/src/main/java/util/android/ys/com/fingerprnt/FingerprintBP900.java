@@ -7,6 +7,7 @@ import android.util.Base64;
 import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Timer;
 
 import com.device.Device;
 
@@ -54,15 +55,6 @@ public class FingerprintBP900 implements Fingerprint {
             Device.cancel();
             regFingerThread.interrupt();
         }
-
-        SystemClock.sleep(1500);
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//            }
-//        }, 1500);
-
     }
 
     /**
@@ -91,6 +83,13 @@ public class FingerprintBP900 implements Fingerprint {
         if (regFingerThread != null || regFingerThread.isAlive() == true) {
             Device.cancel();
             regFingerThread.interrupt();
+
+//            try {
+//                SystemClock.sleep(1500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+
         }
     }
 
