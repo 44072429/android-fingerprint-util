@@ -1,6 +1,8 @@
 package util.android.ys.com.fingerprnt;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Base64;
 import android.util.Log;
 
@@ -52,6 +54,15 @@ public class FingerprintBP900 implements Fingerprint {
             Device.cancel();
             regFingerThread.interrupt();
         }
+
+        SystemClock.sleep(1500);
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//            }
+//        }, 1500);
+
     }
 
     /**
