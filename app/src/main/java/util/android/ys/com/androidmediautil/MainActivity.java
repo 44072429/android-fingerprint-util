@@ -3,6 +3,7 @@ package util.android.ys.com.androidmediautil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        FingerUtilV2.globalInit(this , "default");
+        FingerUtilV2.globalInit(this , "ID510");
     }
 
     @Override
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                Log.d("aaa" , "aa");
                 break;
             case R.id.Btn2:
 

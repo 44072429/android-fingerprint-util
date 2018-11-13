@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <activity android:name=".MainActivity"> -->
-        <activity android:name=".BP900DeiceActivity">
+         <activity android:name=".MainActivity">
+        <!--<activity android:name=".BP900DeiceActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="util.android.ys.com.androidutil.MainActivity" />
